@@ -2,16 +2,29 @@
 <html>
 <head>
 	<title>Using AngularJS Scope</title>
+	<link href="Css/main.css" rel="stylesheet">
+	<link href="Css/ratchet.css" rel="stylesheet">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">	
 </head>
 <body ng-app="myApp">
+	<header class="bar bar-nav noborder">
+		<h3 class="title">Using Angular	Scope</h1>
+	</header>
+	<nav class="bar bar-tab">
+	  <a class="tab-item active" href="#">
+	    <span class="icon icon-home"></span>
+	    <span class="tab-label">Home</span>
+	  </a>
+	</nav>
+	<div class="content">
+	<input type="search" ng-model="name" placeholder="Search by Name or Area"/>
 	<div ng-controller="MyController">
-		<h3>Using Scope</h3>
-		Name:<input type="text" ng-model="name"/>
-		<ul>	
-			<li ng-repeat="cust in customers | filter:name">
-				{{cust.name}} - {{cust.area}}
+		<ul class="table-view">	
+			<li class="table-view-cell media" ng-repeat="cust in customers | filter:name | orderBy:'name'">
+				{{cust.name | uppercase}} - {{cust.area | lowercase}}
 			</li>
 		</ul>
+	</div>
 	</div>
 	<script type="text/javascript" src="Scripts/angular.min.js"></script>
 	<script>
