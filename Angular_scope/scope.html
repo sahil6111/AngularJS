@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using AngularJS Scope</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="MyController">
+		<h3>Using Scope</h3>
+		Name:<input type="text" ng-model="name"/>
+		<ul>	
+			<li ng-repeat="cust in customers | filter:name">
+				{{cust.name}} - {{cust.area}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="Scripts/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('MyController', function ($scope){
+			$scope.customers=[
+				{ name:'Sahil Patel', area:'Vesu' },
+				{ name:'Kautik Mistry', area:'Adajan' },
+				{ name:'Swapnil Tandel', area:'Umra' },
+				{ name:'Nachiket Patel', area:'Bhatar '}
+			];
+		}
+	);
+	</script>
+</body>
+</html>
