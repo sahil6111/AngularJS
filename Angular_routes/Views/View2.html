@@ -1,0 +1,19 @@
+<header class="bar bar-nav noborder">
+		<h4 class="title">View2</h4>
+	</header>
+	<nav class="bar bar-tab">
+	  <a class="tab-item active" href="#view1">
+	    <span class="icon icon-home"></span>
+	    <span class="tab-label">View1</span>
+	  </a>
+	</nav>
+	<div class="content">
+	<input type="search" ng-model="area" placeholder="Search by Customer Area"/>
+	<div>
+		<ul class="table-view">	
+			<li class="table-view-cell media" ng-repeat="cust in customers | filter:area | orderBy:'area'">
+				{{cust.name | uppercase}} - {{cust.area | lowercase}}
+			</li>
+		</ul>
+	</div>
+	</div>

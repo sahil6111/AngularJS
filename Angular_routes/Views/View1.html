@@ -1,0 +1,30 @@
+<header class="bar bar-nav noborder">
+		<h4 class="title">View1</h4>
+	</header>
+	<nav class="bar bar-tab">
+	  <!-- <a class="tab-item active" href="#view1">
+	    <span class="icon icon-home"></span>
+	    <span class="tab-label">Home/View1</span>
+	  </a> -->
+	  <a class="tab-item active" href="#/view2">
+		 <span class="icon icon-pages"></span>
+		 <span class="tab-label">View2</span>
+	  </a>
+	</nav>
+	<div class="content-padded">
+	<input type="search" ng-model="name" placeholder="Search by Customer Name"/>
+	<div>
+		<ul class="table-view">	
+			<li class="table-view-cell media" ng-repeat="cust in customers | filter:name | orderBy:'name'">
+				{{cust.name | uppercase}} - {{cust.area | lowercase}}
+			</li>
+		</ul>
+		<h5>Add Customer</h5>
+		<input type="search" ng-model="newCustomer.name" placeholder="Customer Name"/>
+		<br/>
+		<input type="search" ng-model="newCustomer.area" placeholder="Customer Area"/>
+		<br/>
+		<button class="btn btn-primary btn-block btn-outlined" ng-click = "addCustomers()">Add Customer</button>
+		<br/>
+	</div>
+	</div>
