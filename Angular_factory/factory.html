@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using AngularJS Factory</title>
+	<link href="Css/main.css" rel="stylesheet">
+	<link href="Css/ratchet.css" rel="stylesheet">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">	
+</head>
+<body ng-app="myApp">
+	<div>
+		
+			<div ng-view></div>
+	</header>
+	</div>
+	<script type="text/javascript" src="Scripts/angular.min.js"></script>
+	<script type="text/javascript" src="Scripts/angular-route.js"></script>
+	<script>
+		var app = angular.module('myApp', ['ngRoute']);
+
+		app.config(function ($routeProvider)
+		{
+			$routeProvider
+				.when('/view1',
+					{
+						controller: 'MyController',
+						templateUrl: 'Views/View1.html'
+					})
+				.when('/view2',
+					{
+						controller: 'MyController',
+						templateUrl: 'Views/View2.html'
+					})
+				.otherwise({ redirectTo: '/view1' });
+		});
+
+		app.factory('myFactory', function(){
+			var customers = [
+				{ name:'Sahil Patel', area:'Vesu' },
+				{ name:'Kautik Mistry', area:'Adajan' },
+				{ name:'Swapnil Tandel', area:'Umra' },
+				{ name:'Nachiket Patel', area:'Bhatar '}
+			];
+			var factory = {};
+			factory.getCustomers = function(){
+				return customers;
+			};
+			factory.postCustomers = function(customer){
+
+			};
+			return factory;
+		});
+
+		app.controller('MyController', function ($scope, myFactory){
+			$scope.customers= myFactory.getCustomers();
+			$scope.addCustomers = function(){
+				$scope.customers.push(
+					{
+						name: $scope.newCustomer.name,
+						area: $scope.newCustomer.area
+					});
+			}
+		}
+	);
+	</script>
+</body>
+</html>
