@@ -1,0 +1,24 @@
+<header class="bar bar-nav noborder">
+		<h4>Task 3: Configure a password replication policy
+		<span class="icon icon-left-nav"></span>
+		<span class="icon icon-right-nav"></span></h4>
+	</header>
+	<nav class="bar bar-tab">
+	<div class="segmented-control">
+	 	<a class="control-item" href="#task1">Task 1</a>
+	 	<a class="control-item" href="#task2">Task 2</a>
+	 	<a class="control-item active" href="#task3">Task 3</a>
+	</div>
+	Subtask:
+		<a ng-repeat="task in tasks" class="tab-item active" href="#">
+	    	<span class="tab-label">{{task.no}}</span>
+	  	</a>
+	</nav>
+	<div class="content-padded">
+		<ol>
+			<li ng-model="tasks">
+				{{tasks.subtask}}
+			</li>
+		</ol>
+		
+	</div>

@@ -1,0 +1,17 @@
+.noborder
+{
+	border-bottom: none !important;
+}
+.title
+{
+	font-weight: bold !important;
+	font-size: 20px !important;
+}
+.content-padded
+{
+	margin-top: 80px !important;
+}
+.fright
+{
+	float: right;
+}

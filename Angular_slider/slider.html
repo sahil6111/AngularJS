@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AngularJS Slider</title>
+	<link href="Css/main.css" rel="stylesheet">
+	<link href="Css/ratchet.css" rel="stylesheet">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">	
+</head>
+<body ng-app="myApp">
+	<div>
+		
+			<div ng-view></div>
+	</div>
+	<script type="text/javascript" src="Scripts/angular.min.js"></script>
+	<script type="text/javascript" src="Scripts/angular-route.js"></script>
+	<script>
+		var app = angular.module('myApp', ['ngRoute']);
+
+		app.config(function ($routeProvider)
+		{
+			$routeProvider
+				.when('/task1',
+					{
+						controller: 'MyController',
+						templateUrl: 'Views/Task1.html'
+					})
+				.when('/task2',
+					{
+						controller: 'MyController',
+						templateUrl: 'Views/Task2.html'
+					})
+				.when('/task3',
+					{
+						controller: 'MyController',
+						templateUrl: 'Views/Task3.html'
+					})
+				.otherwise({ redirectTo: '/task1' });
+		});
+
+		app.factory('tasksFactory', function(){
+			var tasks = [
+				{ no:'01', subtask:'1.' },
+				{ no:'02', subtask:'2.' },
+				{ no:'03', subtask:'3.' },
+				{ no:'04', subtask:'4.' },
+				{ no:'05', subtask:'5.' },
+				{ no:'06', subtask:'6.' },
+				{ no:'07', subtask:'7.' },
+				{ no:'08', subtask:'8.' },
+				{ no:'09', subtask:'9.' }
+				
+			];
+			var factory = {};
+			factory.getTasks = function(){
+				return tasks;
+			};
+			
+			return factory;
+		});
+
+		app.controller('MyController', function ($scope, tasksFactory){
+			$scope.tasks= tasksFactory.getTasks();
+		}
+	);
+	</script>
+</body>
+</html>
