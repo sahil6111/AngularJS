@@ -1,26 +1,26 @@
 <header class="bar bar-nav noborder">
 		<h4>Task 2: Install an RODC
-		<span class="icon icon-left-nav"></span>
-		<span class="icon icon-right-nav"></span></h4>
+			<a><span class="icon icon-left-nav"></span></a>
+			<a><span class="icon icon-right-nav"></span></a></h4>
 	</header>
 	<nav class="bar bar-tab">
 	<div class="segmented-control">
 	  	<a class="control-item" href="#task1">Task 1</a>
 	  	<a class="control-item active" href="#task2">Task 2</a>
 	  	<a class="control-item" href="#task3">Task 3</a>
-	 </div>
+	</div>
 	<div>
 	Subtask:
-			<a ng-repeat="task in tasks" class="tab-item active" href="#">
+			<a ng-repeat="t in tasks| filter:{task:'task2'}" class="tab-item active" href="#">
 		    	<!-- <span class="icon icon-home"></span> -->
-		    	<span class="tab-label">{{task.no}}</span>
+		    	<span class="tab-label">{{t.no}}</span>
 		  	</a>
 	</div>
 	</nav>
 	<div class="content-padded">
 		<ol>
-			<li ng-model="tasks">
-				{{tasks.subtask}}
+			<li ng-repeat="t in tasks| filter:{task:'task2'}">
+				{{t.subtask}}
 			</li>
 		</ol>
 		
