@@ -1,51 +1,26 @@
 <header class="bar bar-nav noborder">
 		<h4>Task 1: Verify requirements for installing an RODC
-			<a><span id="prev" class="icon icon-left-nav"></span></a>
-			<a><span id="next" class="icon icon-right-nav"></span></a></h4>
+			<a><span id="prev" class="icon icon-left-nav" ng-click="prev()"></span></a>
+			<a><span id="next" class="icon icon-right-nav" ng-click="next()"></span></a></h4>
 	</header>
 	<nav class="bar bar-tab">
 	<div class="segmented-control">
 	    <a class="control-item active" href="#task1">Task 1</a>
 	    <a class="control-item" href="#task2">Task 2</a>
 	    <a class="control-item" href="#task3">Task 3</a>
+
+	    
 	</div>
 	<div>
 	Subtask:
-		<a ng-repeat="t in tasks| filter:{task:'task1'}" class="tab-item active" href="#">
+		<a ng-repeat="t in tasks| filter:{task:'task1'}" class="tab-item" href="#" ng-class="{active: $index == 0}">
 	    	<!-- <span class="icon icon-home"></span> -->
 	    	<span class="tab-label">{{t.no}}</span>
 	  	</a>
 	</div>
-
-	  <!-- <a class="tab-item active" href="#view1">
-	    <span class="icon icon-home"></span>
-	    <span class="tab-label">Home/View1</span>
-	  </a> -->
-	  <!-- <a class="tab-item active" href="#/view2">
-		 <span class="icon icon-pages"></span>
-		 <span class="tab-label">View2</span>
-	  </a> -->
 	</nav>
 	<div class="content-padded">
-		<ol>
-			<li ng-repeat="t in tasks | filter:{task:'task1'}" ng-bind-html="t.subtask">
-				{{t.subtask}}
-			</li>
-		</ol>
-		
-	<!-- <input type="search" ng-model="name" placeholder="Search by Customer Name"/>
-	<div>
-		<ul class="table-view">	
-			<li class="table-view-cell media" ng-repeat="cust in customers | filter:name | orderBy:'name'">
-				{{cust.name | uppercase}} - {{cust.area | lowercase}}
-			</li>
-		</ul>
-		<h5>Add Customer</h5>
-		<input type="search" ng-model="newCustomer.name" placeholder="Customer Name"/>
-		<br/>
-		<input type="search" ng-model="newCustomer.area" placeholder="Customer Area"/>
-		<br/>
-		<button class="btn btn-primary btn-block btn-outlined" ng-click = "addCustomers()">Add Customer</button>
-		<br/>
-	</div> -->
+		<span id="sub">
+				{{tasks[0].subtask}}
+		</span>
 	</div>

@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="Scripts/angular-route.js"></script>
 	<script type="text/javascript" src="Scripts/angular-sanitize.js"></script>
 	<script>
+		var counter=0;
 		var app = angular.module('myApp', ['ngRoute', 'ngSanitize']);
 
 		app.config(function ($routeProvider)
@@ -40,15 +41,15 @@
 
 		app.factory('tasksFactory', function(){
 			var tasks = [
-				{ task:'task1', no:'01', subtask:'On LON-DC1, from Server Manager, open Active Directory Users and Computers.' },
-				{ task:'task1', no:'02', subtask:'In the properties of Adatum.com, verify that the forest functional level is at least Windows Server 2003.' },
-				{ task:'task1', no:'03', subtask:'On LON-SVR1, open Server Manager, and verify whether the computer is a a domain memeber.' },
-				{ task:'task1', no:'04', subtask:'Use System Properties to place LON-SVR1 in a workgroup named TEMPORARY.' },
-				{ task:'task1', no:'05', subtask:'Restart LON-SVR1.' },
-				{ task:'task1', no:'06', subtask:'On LON-DC1, open Active Directory Users and Computers.' },
-				{ task:'task1', no:'07', subtask:'Delete the LON-SVR1 computer account from the Computers container.' },
-				{ task:'task1', no:'08', subtask:'In the Domain Controllers OU, precreate an RODC account by using default settings, except for the following:<ul><li>Computer name: LON-SVR1</li><li>Delegate to: ADATUMIT</li></ul>' },
-				{ task:'task1', no:'09', subtask:'Close Active Directory Users and Computers.' },
+				{ task:'task1', no:'01', subtask:'1. On LON-DC1, from Server Manager, open Active Directory Users and Computers.' },
+				{ task:'task1', no:'02', subtask:'2. In the properties of Adatum.com, verify that the forest functional level is at least Windows Server 2003.' },
+				{ task:'task1', no:'03', subtask:'3. On LON-SVR1, open Server Manager, and verify whether the computer is a a domain memeber.' },
+				{ task:'task1', no:'04', subtask:'4. Use System Properties to place LON-SVR1 in a workgroup named TEMPORARY.' },
+				{ task:'task1', no:'05', subtask:'5. Restart LON-SVR1.' },
+				{ task:'task1', no:'06', subtask:'6. On LON-DC1, open Active Directory Users and Computers.' },
+				{ task:'task1', no:'07', subtask:'7. Delete the LON-SVR1 computer account from the Computers container.' },
+				{ task:'task1', no:'08', subtask:'8. In the Domain Controllers OU, precreate an RODC account by using default settings, except for the following:<ul><li>Computer name: LON-SVR1</li><li>Delegate to: ADATUMIT</li></ul>' },
+				{ task:'task1', no:'09', subtask:'9. Close Active Directory Users and Computers.' },
 				
 				{ task:'task2', no:'01', subtask:'1.' },
 				{ task:'task2', no:'02', subtask:'2.' },
@@ -72,6 +73,20 @@
 
 		app.controller('MyController', function ($scope, tasksFactory){
 			$scope.tasks= tasksFactory.getTasks();
+			$scope.next= function(){
+				counter++;
+				var subtaskElement = document.getElementById("sub");
+				
+				angular.element(subtaskElement).html($scope.tasks[counter].subtask);
+				//angular.ng-class="{active: $index == " + counter + "}";
+			}
+			$scope.prev= function(){
+				counter--;
+				var subtaskElement = document.getElementById("sub");
+				angular.element(subtaskElement).html($scope.tasks[counter].subtask);
+			}
+
+			
 		}
 	);
 	</script>
